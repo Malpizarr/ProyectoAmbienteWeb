@@ -6,23 +6,11 @@ body {
     color: #333;
 }
 
-header, footer {
+header {
     background-color: #333;
     color: white;
     text-align: center;
     padding: 1em 0;
-}
-
-main {
-    padding: 2em;
-}
-
-section {
-    margin: 2em 0;
-}
-
-h1, h2 {
-    color: #007BFF;
 }
 
 nav ul {
@@ -33,17 +21,110 @@ nav ul {
 }
 
 nav ul li {
-    float: left;
+    display: inline;
+    margin: 0 10px;
 }
 
 nav ul li a {
-    display: block;
     color: white;
-    text-align: center;
-    padding: 14px 16px;
     text-decoration: none;
+    padding: 14px 20px;
 }
 
 nav ul li a:hover {
-    background-color: #111;
+    background-color: #555;
+}
+
+main {
+    padding: 20px;
+}
+
+section {
+    margin: 20px 0;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+#welcome {
+    text-align: center;
+    background-size: cover;
+    color: #070707;
+    padding: 50px 20px;
+    border-radius: 10px;
+}
+
+
+
+#contact {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#contact form {
+    display: flex;
+    flex-direction: column;
+}
+
+#contact form label {
+    margin: 10px 0 5px;
+}
+
+#contact form input, #contact form textarea, #contact form button {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#contact form button {
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#contact form button:hover {
+    background-color: #555;
+}
+
+#services {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#services ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+#services ul li {
+    margin-bottom: 10px;
+}
+
+.popup {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    opacity: 1;
+    transition: opacity 1s ease-out;
 }

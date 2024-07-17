@@ -1,17 +1,29 @@
 <?php
 include "database.php";
 
-$name = $_POST["name"];
-$email = $_POST["email"];
-$message = $_POST["message"];
+$response = [];
 
-$sql = "INSERT INTO contacto (nombre, email, mensaje) VALUES (\"$name\", \"$email\", \"$message\")";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+    $message = $_POST["message"];
 
-if ($conn->query($sql) === TRUE) {
-    echo "Mensaje enviado correctamente";
+    $sql = "INSERT INTO contacto (nombre, email, mensaje) VALUES ('$name', '$email', '$message')";
+
+    if ($conn->query($sql) === TRUE) {
+        $response['status'] = 'success';
+        $response['message'] = 'Mensaje enviado correctamente';
+    } else {
+        $response['status'] = 'error';
+        $response['message'] = 'Error: ' . $conn->error;
+    }
+
+    $conn->close();
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    $response['status'] = 'error';
+    $response['message'] = 'Método de solicitud no válido.';
 }
 
-$conn->close();
+header('Content-Type: application/json');
+echo json_encode($response);
 ?>

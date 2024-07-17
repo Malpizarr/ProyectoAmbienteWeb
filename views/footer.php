@@ -1,3 +1,5 @@
-<footer>
-    <p>&copy; 2024 Cuidados Paliativos. Todos los derechos reservados.</p>
-</footer>
+        <footer>
+            <p>Grupo 7. Proyecto.</p>
+        </footer>
+    </body>
+</html>
