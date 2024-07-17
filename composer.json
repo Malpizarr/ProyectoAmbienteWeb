@@ -1,0 +1,12 @@
+{
+    "name": "cuidados-paliativos/portal",
+    "description": "Portal web para Cuidados Paliativos",
+    "require": {
+        "php": ">=7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}
