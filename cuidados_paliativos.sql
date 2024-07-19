@@ -42,3 +42,9 @@ CREATE TABLE donaciones (
 );
 
 
+/* Modelo entidad relacion
+
+tabla Users - tabla Citas: Un usuario puede reservar varias citas, pero cada cita es reservada por un solo usuario (relación 1 a N).
+
+tabla Users - tabla Donaciones: Un usuario puede realizar varias donaciones, pero cada donación es realizada por un solo usuario (relación 1 a N).*/
+
