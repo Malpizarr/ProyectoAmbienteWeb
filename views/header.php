@@ -20,6 +20,7 @@ include_once "../src/auth.php";
             <li><a href="services.php">Servicios</a></li>
             <li><a href="resources.php">Recursos</a></li>
             <li><a href="contact.php">Contacto</a></li>
+            <li><a href="comentar.php">Comentar</a></li>
             <li><a href="donar.php">Donar</a></li>
             <?php if (isLoggedIn()): ?>
                 <li><a href="citas.php">Citas</a></li>

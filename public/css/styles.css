@@ -455,3 +455,52 @@ footer {
         padding: 0.8em;
     }
 }
+
+#comentar select,
+#comentar textarea {
+    margin: 10px 0;
+    padding: 10px;
+}
+
+#comentar {
+    max-width: 700px;
+    margin: auto;
+}
+
+#comentar h2 {
+    text-align: center;
+}
+
+#comentar form{
+    display: flex;
+    flex-direction: column;
+}
+
+#comentar form button {
+    background-color: #005f73;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#comentar form button:hover {
+    background-color: #0a9396;
+}
+
+#comentarios {
+    max-width: 700px;
+    margin: 20px auto;
+}
+
+#comentarios h2 {
+    text-align: center;
+}
+
+.comentario {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
