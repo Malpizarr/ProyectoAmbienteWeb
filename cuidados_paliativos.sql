@@ -48,3 +48,4 @@ tabla Users - tabla Citas: Un usuario puede reservar varias citas, pero cada cit
 
 tabla Users - tabla Donaciones: Un usuario puede realizar varias donaciones, pero cada donación es realizada por un solo usuario (relación 1 a N).*/
 
+/* Mapa y diagrama*/
