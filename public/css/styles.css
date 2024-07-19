@@ -1,38 +1,110 @@
-body {
-    font-family: Arial, sans-serif;
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
     color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+main {
+    flex: 1 0 auto;
+}
+#resources, #resource_1, #resource_2, #resource_3, #resource_4, #resource_5 {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#resources ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#resources ul li {
+    margin: 10px 0;
+}
+
+#resources ul li a {
+    text-decoration: none;
+    color: #005f73;
+    font-weight: bold;
+}
+
+#resources ul li a:hover {
+    color: #0a9396;
+}
+
+#about-img, #services-img {
+    max-width: 60%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#about-img:hover, #services-img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
 header {
-    background-color: #333;
+    background-color: #003049;
     color: white;
-    text-align: center;
     padding: 1em 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+    padding-bottom: 0.5em;
+    text-align: center;
+}
+
+nav {
+    background-color: #003049;
+    padding: 0.5em 0;
 }
 
 nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 nav ul li {
-    display: inline;
-    margin: 0 10px;
+    margin: 0.5em;
 }
 
 nav ul li a {
     color: white;
     text-decoration: none;
-    padding: 14px 20px;
+    font-weight: 500;
+    padding: 0.5em 1em;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 nav ul li a:hover {
-    background-color: #555;
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
 }
 
 main {
@@ -41,35 +113,271 @@ main {
 
 section {
     margin: 20px 0;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
 footer {
-    background-color: #333;
+    flex-shrink: 0;
+    background-color: #003049;
     color: white;
     text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    bottom: 0;
+    padding: 20px 0;
     width: 100%;
 }
 
-#welcome {
-    text-align: center;
-    background-size: cover;
-    color: #070707;
-    padding: 50px 20px;
-    border-radius: 10px;
+footer p {
+    margin: 0;
+    font-size: 0.9em;
 }
-
-
-
-#contact {
-    max-width: 600px;
+#admin {
+    max-width: 800px;
     margin: auto;
     padding: 20px;
     background: white;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#admin table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+#admin table, #admin th, #admin td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#admin th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+
+#admin form {
+    display: flex;
+    flex-direction: column;
+}
+
+#admin form label {
+    margin: 10px 0 5px;
+}
+
+#admin form input, #admin form select, #admin form button {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#admin form button {
+    background-color: #005f73;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#admin form button:hover {
+    background-color: #0a9396;
+}
+#admin_citas, #citas {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#admin_citas table, #citas table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+#admin_citas table, #admin_citas th, #admin_citas td, #citas table, #citas th, #citas td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#admin_citas th, #citas th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+
+#admin_citas form, #citas form {
+    display: flex;
+    flex-direction: column;
+}
+
+#admin_citas form label, #citas form label {
+    margin: 10px 0 5px;
+}
+
+#admin_citas form input, #admin_citas form textarea, #admin_citas form button, #citas form button {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#admin_citas form button, #citas form button {
+    background-color: #005f73;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#admin_citas form button:hover, #citas form button:hover {
+    background-color: #0a9396;
+}
+#donar, #admin_donaciones {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#donar form, #admin_donaciones table {
+    width: 100%;
+}
+
+#donar form label, #donar form textarea, #donar form input, #donar form button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+#donar form button {
+    background-color: #005f73;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#donar form button:hover {
+    background-color: #0a9396;
+}
+
+#admin_donaciones table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#admin_donaciones th, #admin_donaciones td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#admin_donaciones th {
+    background-color: #f2f2f2;
+}
+
+footer {
+    background-color: #005f73;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+#login, #register {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#login form, #register form {
+    display: flex;
+    flex-direction: column;
+}
+
+#login form label, #register form label {
+    margin: 10px 0 5px;
+}
+
+#login form input, #register form input, #login form button, #register form button {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#login form button, #register form button {
+    background-color: #005f73;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#login form button:hover, #register form button:hover {
+    background-color: #0a9396;
+}
+
+#login p, #register p {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#login p a, #register p a {
+    color: #005f73;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#login p a:hover, #register p a:hover {
+    text-decoration: underline;
+}
+
+.hero {
+    text-align: center;
+    background-color: #4c9daf;
+    color: white;
+    padding: 50px 20px;
+    border-radius: 10px;
+}
+
+.hero img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+#overview {
+    text-align: center;
+}
+
+#overview .btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #0a9396;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#overview .btn:hover {
+    background-color: #94d2bd;
+}
+
+#contact {
+    max-width: 600px;
+    margin: auto;
 }
 
 #contact form {
@@ -87,32 +395,30 @@ footer {
 }
 
 #contact form button {
-    background-color: #333;
+    background-color: #005f73;
     color: white;
     border: none;
     cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
 }
 
 #contact form button:hover {
-    background-color: #555;
+    background-color: #0a9396;
 }
 
-#services {
-    max-width: 800px;
-    margin: auto;
-    padding: 20px;
-    background: white;
+#services img {
+    width: 100%;
+    height: auto;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
 }
 
-#services ul {
-    list-style-type: disc;
-    padding-left: 20px;
-}
-
-#services ul li {
-    margin-bottom: 10px;
+#about img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 20px;
 }
 
 .popup {
@@ -120,11 +426,32 @@ footer {
     top: 10px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #4CAF50;
+    background-color: #0a9396;
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     opacity: 1;
     transition: opacity 1s ease-out;
+}
+@media (max-width: 768px) {
+    header {
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 0.3em 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    nav ul li a {
+        display: block;
+        padding: 0.8em;
+    }
 }

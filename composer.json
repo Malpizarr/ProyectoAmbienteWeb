@@ -2,7 +2,8 @@
     "name": "cuidados-paliativos/portal",
     "description": "Portal web para Cuidados Paliativos",
     "require": {
-        "php": ">=7.4"
+        "php": ">=7.4",
+      "ext-mysqli": "*"
     },
     "autoload": {
         "psr-4": {
