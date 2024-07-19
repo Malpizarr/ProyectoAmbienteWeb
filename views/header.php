@@ -15,7 +15,7 @@ include_once "../src/auth.php";
     <h1>Cuidados Paliativos</h1>
     <nav>
         <ul>
-            <li><a href="public/index.php">Inicio</a></li>
+            <li><a href="index.php">Inicio</a></li>
             <li><a href="about.php">Sobre Nosotros</a></li>
             <li><a href="services.php">Servicios</a></li>
             <li><a href="resources.php">Recursos</a></li>
