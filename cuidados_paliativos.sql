@@ -41,4 +41,21 @@ CREATE TABLE donaciones (
                             FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
+CREATE TABLE comentarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    servicio_id INT NOT NULL,
+    comentario TEXT NOT NULL,
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (servicio_id) REFERENCES servicios(id)
+);
 
+
+/* Modelo entidad relacion
+
+tabla Users - tabla Citas: Un usuario puede reservar varias citas, pero cada cita es reservada por un solo usuario (relación 1 a N).
+
+tabla Users - tabla Donaciones: Un usuario puede realizar varias donaciones, pero cada donación es realizada por un solo usuario (relación 1 a N).*/
+
+/* Mapa y diagrama*/
