@@ -1,6 +1,7 @@
 <?php
 include "auth.php";
-require "Admin.php";
+require_once 'database.php';
+require_once 'Admin.php';
 
 if (!isLoggedIn() || getUserRole() != 'encargado') {
     header('Location: ../public/login.php');
@@ -15,7 +16,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header('Location: ../public/admin.php');
         exit;
     } else {
-        echo "Error al eliminar usuario.";
+        echo "<script>
+                alert('Error al eliminar usuario.');
+                window.location.href = '../public/admin.php';
+              </script>";
+        error_log("Error al intentar eliminar el usuario con ID: $userId");
     }
 }
 ?>

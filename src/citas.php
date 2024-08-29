@@ -6,13 +6,27 @@ class Cita {
         $this->conn = $dbConnection;
     }
 
+    private function eliminarCitasPasadas() {
+        $sql = "DELETE FROM citas WHERE fecha < NOW() - INTERVAL 1 DAY";
+        $this->conn->query($sql);
+    }
+
     public function getAllCitas() {
+        $this->eliminarCitasPasadas();
         $sql = "SELECT * FROM citas";
         $result = $this->conn->query($sql);
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getAllCitasNoReservadas() {
+        $this->eliminarCitasPasadas();
+        $sql = "SELECT * FROM citas WHERE reservado_por is NULL";
+        $result = $this->conn->query($sql);
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getCitasByUser($userId) {
+        $this->eliminarCitasPasadas();
         $sql = "SELECT * FROM citas WHERE reservado_por = ?";
         if ($stmt = $this->conn->prepare($sql)) {
             $stmt->bind_param("i", $userId);
