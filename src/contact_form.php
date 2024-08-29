@@ -1,7 +1,7 @@
 <?php
 include "database.php";
 
-$response = [];
+$response = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST["name"];
@@ -11,19 +11,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO contacto (nombre, email, mensaje) VALUES ('$name', '$email', '$message')";
 
     if ($conn->query($sql) === TRUE) {
-        $response['status'] = 'success';
-        $response['message'] = 'Mensaje enviado correctamente';
+        $response = 'success';
     } else {
-        $response['status'] = 'error';
-        $response['message'] = 'Error: ' . $conn->error;
+        $response = 'error';
     }
 
     $conn->close();
 } else {
-    $response['status'] = 'error';
-    $response['message'] = 'Método de solicitud no válido.';
+    $response = 'invalid_method';
 }
 
-header('Content-Type: application/json');
-echo json_encode($response);
+header("Location: ../public/contact.php?status=" . $response);
+exit;
 ?>

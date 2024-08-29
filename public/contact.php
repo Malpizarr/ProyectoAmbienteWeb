@@ -3,6 +3,19 @@
 <main>
     <section id="contact">
         <h2>Contacto</h2>
+
+        <?php if (isset($_GET['status'])): ?>
+            <script>
+                <?php if ($_GET['status'] == 'success'): ?>
+                alert('Mensaje enviado correctamente');
+                <?php elseif ($_GET['status'] == 'error'): ?>
+                alert('Hubo un error al enviar el mensaje');
+                <?php elseif ($_GET['status'] == 'invalid_method'): ?>
+                alert('Método de solicitud no válido');
+                <?php endif; ?>
+            </script>
+        <?php endif; ?>
+
         <form action="../src/contact_form.php" method="post">
             <label for="name">Nombre:</label>
             <input type="text" id="name" name="name" required>
