@@ -16,7 +16,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: ../public/index.php");
             exit;
         } else {
-            echo "Contraseña incorrecta";
+                echo "<script>
+                alert('Contrasena incorrecta.');
+                window.location.href = '../public/login.php';
+              </script>";
+
         }
     } else {
         echo "Usuario no encontrado";

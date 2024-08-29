@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const form = document.querySelector("#contact form");
+    const form = document.querySelector("#contactForm");
 
     form.addEventListener("submit", function(e) {
         e.preventDefault();
@@ -12,7 +12,11 @@ document.addEventListener("DOMContentLoaded", () => {
         })
             .then(response => response.json())
             .then(data => {
-                alert("Mensaje enviado: " + data.message);
+                if (data.status === "success") {
+                    alert(data.message);
+                } else {
+                    alert(data.message);
+                }
             })
             .catch(error => {
                 console.error("Error:", error);
