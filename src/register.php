@@ -18,11 +18,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO users (username, email, password, role) VALUES ('$username', '$email', '$hashed_password', '$role')";
 
     if ($conn->query($sql) === TRUE) {
-    echo "<script>alert('Registro exitoso'); window.location.href='../public/login.php';</script>";
-    exit;
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
+        echo "<script>alert('Registro exitoso'); window.location.href='../public/login.php';</script>";
+        exit;
+    } else {
+        $error_message = addslashes("Error: " . $conn->error);
+        echo "<script>
+                alert('$error_message');
+                window.location.href = '../public/register.php';
+              </script>";
+    }
 
     $conn->close();
 }
