@@ -60,6 +60,17 @@ public function desreservarCita($citaId) {
         }
     }
 
+    public function updateCita($citaId, $fecha, $detalles) {
+        $sql = "UPDATE citas SET fecha = ?, detalles = ? WHERE id = ?";
+
+        if ($stmt = $this->conn->prepare($sql)) {
+            $stmt->bind_param("ssi", $fecha, $detalles, $citaId);
+            return $stmt->execute();
+        } else {
+            return false;
+        }
+    }
+
     public function reservarCita($citaId, $userId) {
         $sql = "UPDATE citas SET reservado_por = ? WHERE id = ?";
 
