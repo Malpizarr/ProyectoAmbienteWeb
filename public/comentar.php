@@ -3,24 +3,38 @@ include_once '../views/header.php';
 include_once '../src/auth.php';
 require_once '../src/Comentario.php';
 
-
 if (!isLoggedIn()) {
-    header('Location: login.php');
-    exit;
+header('Location: login.php');
+exit;
 }
 
-$comentario = new Comentario($conn);
+    $comentario = new Comentario($conn);
+    $userRole = getUserRole();
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["servicio_id"])  && isset($_POST["comentario"])) {
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST["comentario_id"])) {
+    if ($userRole === 'encargado') {
+    $comentarioId = $_POST["comentario_id"];
+    if ($comentario->deleteComentario($comentarioId)) {
+    $mensaje = "Comentario eliminado con éxito.";
+    } else {
+    $mensaje = "Error al eliminar el comentario.";
+    error_log("Error al eliminar el comentario con ID: $comentarioId");
+    }
+    } else {
+    $mensaje = "No tienes permiso para eliminar comentarios.";
+    }
+    } else if (isset($_POST["servicio_id"]) && isset($_POST["comentario"])) {
     $userId = $_SESSION['user_id'];
     $servicioId = $_POST["servicio_id"];
     $comentarioTexto = $_POST["comentario"];
 
     if ($comentario->addComentario($userId, $servicioId, $comentarioTexto)) {
-        $mensaje = "Comentario guardado con éxito.";
+    $mensaje = "Comentario guardado con éxito.";
     } else {
-        $mensaje = "Error al guardar el comentario.";
-        error_log("Error al guardar el comentario.");
+    $mensaje = "Error al guardar el comentario.";
+    error_log("Error al guardar el comentario.");
+    }
     }
 }
 
@@ -35,18 +49,18 @@ $result = $conn->query($sql);
             <p><?php echo $mensaje; ?></p>
         <?php endif; ?>
         <form action="comentar.php" method="post">
-        <label for="servicio_id" class="label_coment">Selecciona un servicio:</label>
-    <select name="servicio_id" id="servicio_id">
-        <?php
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                echo '<option value="' . htmlspecialchars($row['id']) . '">' . htmlspecialchars($row['nombre_servicio']) . '</option>';
-            }
-        } else {
-            echo '<option value="">No hay servicios disponibles</option>';
-        }
-        ?>
-    </select>
+            <label for="servicio_id" class="label_coment">Selecciona un servicio:</label>
+            <select name="servicio_id" id="servicio_id">
+                <?php
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo '<option value="' . htmlspecialchars($row['id']) . '">' . htmlspecialchars($row['nombre_servicio']) . '</option>';
+                    }
+                } else {
+                    echo '<option value="">No hay servicios disponibles</option>';
+                }
+                ?>
+            </select>
             <label for="comentario" class="label_coment">Comentario:</label>
             <textarea id="comentario" name="comentario" required></textarea>
             <button type="submit">Enviar</button>
@@ -55,19 +69,27 @@ $result = $conn->query($sql);
     <section id="comentarios">
         <h2>Comentarios de usuarios</h2>
         <?php
-$comentarios = $comentario->getAllComentarios();  
+        $comentarios = $comentario->getAllComentarios();
 
-foreach ($comentarios as $comentario) {
-    echo '<div class="comentario">';
-    echo "<strong>Usuario: </strong>" . htmlspecialchars($comentario['username']) . "<br>";
-    echo "<strong>Servicio: </strong>" . htmlspecialchars($comentario['servicio']) . "<br>";  
-    echo "<strong>Comentario: </strong>" . htmlspecialchars($comentario['comentario']) . "<br>";
-    echo "<strong>Fecha: </strong>" . htmlspecialchars($comentario['fecha']) . "<br>";
-    echo '</div><br>';
-}
+        foreach ($comentarios as $comentario) {
+            echo '<div class="comentario">';
+            echo "<strong>Usuario: </strong>" . htmlspecialchars($comentario['username']) . "<br>";
+            echo "<strong>Servicio: </strong>" . htmlspecialchars($comentario['servicio']) . "<br>";
+            echo "<strong>Comentario: </strong>" . htmlspecialchars($comentario['comentario']) . "<br>";
+            echo "<strong>Fecha: </strong>" . htmlspecialchars($comentario['fecha']) . "<br>";
+            echo '</div><br>';
+
+            if ($userRole === 'encargado') {
+                echo '<form action="comentar.php" method="post" style="display:inline;">';
+                echo '<input type="hidden" name="comentario_id" value="' . htmlspecialchars($comentario['id']) . '">';
+                echo '<button type="submit">Eliminar</button>';
+                echo '</form>';
+            }
+
+            echo '</div><br>';
+        }
         ?>
     </section>
 </main>
-<div class="hola"></div>
 
 <?php include '../views/footer.php'; ?>
